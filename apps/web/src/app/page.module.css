@@ -1,0 +1,208 @@
+.page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 40%, #ffffff 100%);
+  color: #111827;
+}
+
+.main {
+  width: min(1000px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  color: #4b5563;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 14px;
+  border: 1px solid #dbeafe;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+}
+
+.card h2 {
+  margin-bottom: 6px;
+  font-size: 19px;
+}
+
+.grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.reason {
+  margin-top: 10px;
+  color: #1d4ed8;
+}
+
+.expired {
+  margin-top: 10px;
+  color: #7c2d12;
+  font-weight: 600;
+}
+
+.timerTrack {
+  position: relative;
+  margin-top: 10px;
+  height: 36px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.timerFill {
+  height: 100%;
+  background: linear-gradient(90deg, #c4b5fd, #93c5fd);
+  border-radius: 999px;
+}
+
+.timerIcon {
+  position: absolute;
+  top: 6px;
+  font-size: 22px;
+  transform: translateX(-50%);
+}
+
+.fire {
+  margin-top: 6px;
+}
+
+.tiers {
+  margin-top: 8px;
+  color: #475569;
+  font-size: 13px;
+}
+
+.questList {
+  margin-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.problem {
+  margin-top: 8px;
+  border-radius: 10px;
+  background: #f8fafc;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  white-space: pre-wrap;
+  line-height: 1.4;
+}
+
+.input {
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  padding: 10px 12px;
+  font-size: 15px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.buttons button {
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.buttons button:nth-child(2) {
+  background: #f59e0b;
+}
+
+.buttons button:hover {
+  filter: brightness(1.05);
+}
+
+.buttons button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.socratic {
+  margin-top: 10px;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 10px;
+  padding: 10px;
+  color: #312e81;
+}
+
+.videoHost {
+  width: 100%;
+  min-height: 240px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #e2e8f0;
+  margin-top: 10px;
+}
+
+.videoMessage {
+  margin-top: 8px;
+  color: #166534;
+  font-weight: 600;
+}
+
+.videoMeta {
+  margin-top: 4px;
+  color: #334155;
+  font-size: 13px;
+}
+
+.error {
+  color: #b91c1c;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.centered {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #f8fafc;
+}
+
+.confettiLayer {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 20;
+}
+
+.confettiPiece {
+  position: absolute;
+  top: -24px;
+  font-size: 20px;
+  animation: fall 1700ms linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(200deg);
+  }
+}

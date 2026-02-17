@@ -11,6 +11,7 @@ End-to-end scaffold for a hyper-personalized adaptive learning experience design
 apps/
   backend/   # NestJS API + BKT + gamification + AI/RAG services
   mobile/    # Expo React Native app (iOS/Android/Web)
+  web/       # Next.js website (fully functional, Vercel-ready)
 docs/
   PRD.md     # Product requirements and implementation mapping
 docker-compose.yml
@@ -18,6 +19,7 @@ docker-compose.yml
 
 ## Stack
 - Frontend: React Native (Expo)
+- Frontend (Web): Next.js (App Router)
 - Backend: NestJS (Node.js, TypeScript)
 - PostgreSQL: user profile + BKT mastery
 - MongoDB: gamification state + XP ledger
@@ -50,11 +52,26 @@ npm run start:backend
 npm run start:mobile
 ```
 
+### 5) Start the website right now
+```bash
+npm run start:web
+```
+
+Then open: `http://localhost:3000`
+
 ## API Endpoints
 - `POST /api/session/start`
 - `POST /api/content/generate`
 - `POST /api/progress/submit`
 - `POST /api/video/verify`
+
+The website (`apps/web`) ships with these API routes built in, so it runs standalone without external services.
+
+## Deploy to Vercel
+```bash
+npm run deploy:web:vercel
+```
+This deploys `apps/web` directly as a Next.js project and returns a live URL.
 
 See `docs/PRD.md` for acceptance-criteria mapping.
 
