@@ -131,7 +131,7 @@ export class VectorMemoryService {
       return docs.map((text, i) => ({
         id: ids[i] ?? randomUUID(),
         user_id: params.user_id,
-        text,
+        text: text ?? '',
         metadata: (metas?.[i] as Record<string, unknown>) ?? {},
         created_at: new Date().toISOString(),
       }));

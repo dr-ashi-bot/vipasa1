@@ -512,7 +512,7 @@ function VideoLesson(props: {
               height={Platform.OS === 'web' ? 360 : 240}
               play={playing}
               videoId={videoId}
-              onChangeState={(s) => {
+              onChangeState={(s: string) => {
                 if (s === 'playing') setPlaying(true);
                 if (s === 'paused' || s === 'ended') setPlaying(false);
               }}

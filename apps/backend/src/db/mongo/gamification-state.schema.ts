@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { LEAGUE_TIERS, LeagueTier } from '../../domain/leagues';
+import { LEAGUE_TIERS } from '../../domain/leagues';
+import type { LeagueTier } from '../../domain/leagues';
 
 export type GamificationStateDocument = HydratedDocument<GamificationState>;
 
