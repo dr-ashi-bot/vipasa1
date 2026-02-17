@@ -1,6 +1,6 @@
 import { Injectable, Logger, OnModuleDestroy, OnModuleInit } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
-import amqplib, { type Channel, type Connection, type ConsumeMessage } from "amqplib";
+import { connect, type Channel, type ChannelModel, type ConsumeMessage } from "amqplib";
 import type { ProgressEventPayload, VideoEventPayload } from "../types";
 import { GamificationService } from "./gamification.service";
 
@@ -11,7 +11,7 @@ type QueueEvent =
 @Injectable()
 export class RabbitMqService implements OnModuleInit, OnModuleDestroy {
   private readonly logger = new Logger(RabbitMqService.name);
-  private connection: Connection | null = null;
+  private connection: ChannelModel | null = null;
   private channel: Channel | null = null;
   private queueName: string;
 
@@ -25,10 +25,12 @@ export class RabbitMqService implements OnModuleInit, OnModuleDestroy {
   async onModuleInit(): Promise<void> {
     const rabbitUrl = this.configService.get<string>("RABBITMQ_URL", "amqp://guest:guest@localhost:5672");
     try {
-      this.connection = await amqplib.connect(rabbitUrl);
-      this.channel = await this.connection.createChannel();
-      await this.channel.assertQueue(this.queueName, { durable: true });
-      await this.channel.consume(this.queueName, (msg) => this.consume(msg), { noAck: false });
+      const connection = await connect(rabbitUrl);
+      const channel = await connection.createChannel();
+      await channel.assertQueue(this.queueName, { durable: true });
+      await channel.consume(this.queueName, (msg) => this.consume(msg), { noAck: false });
+      this.connection = connection;
+      this.channel = channel;
       this.logger.log(`RabbitMQ connected, consuming queue "${this.queueName}"`);
     } catch (error) {
       this.logger.warn(
