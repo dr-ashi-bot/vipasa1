@@ -1,0 +1,11 @@
+{
+  "name": "adaptive-learning-platform",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "backend": "cd backend && npm run start:dev",
+    "frontend": "cd frontend && npm start",
+    "db:up": "docker-compose up -d",
+    "db:down": "docker-compose down"
+  }
+}
