@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: adaptive-learning-api
+    env: node
+    region: oregon
+    plan: free
+    rootDir: backend
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PG_HOST
+        sync: false
+      - key: PG_PORT
+        value: "5432"
+      - key: PG_USER
+        sync: false
+      - key: PG_PASSWORD
+        sync: false
+      - key: PG_DB
+        sync: false
+      - key: MONGO_URI
+        sync: false

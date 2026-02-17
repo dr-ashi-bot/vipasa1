@@ -18,16 +18,26 @@ import { BKTMastery } from './entities/bkt-mastery.entity';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.PG_HOST ?? 'localhost',
-      port: parseInt(process.env.PG_PORT ?? '5432', 10),
-      username: process.env.PG_USER ?? 'postgres',
-      password: process.env.PG_PASSWORD ?? 'postgres',
-      database: process.env.PG_DB ?? 'adaptive_learning',
-      entities: [UserProfile, BKTMastery],
-      synchronize: true,
-    }),
+    TypeOrmModule.forRoot(
+      process.env.DATABASE_URL
+        ? {
+            type: 'postgres',
+            url: process.env.DATABASE_URL,
+            entities: [UserProfile, BKTMastery],
+            synchronize: true,
+            ssl: { rejectUnauthorized: false },
+          }
+        : {
+            type: 'postgres',
+            host: process.env.PG_HOST ?? 'localhost',
+            port: parseInt(process.env.PG_PORT ?? '5432', 10),
+            username: process.env.PG_USER ?? 'postgres',
+            password: process.env.PG_PASSWORD ?? 'postgres',
+            database: process.env.PG_DB ?? 'adaptive_learning',
+            entities: [UserProfile, BKTMastery],
+            synchronize: true,
+          },
+    ),
     MongooseModule.forRoot(
       process.env.MONGO_URI ?? 'mongodb://localhost:27017/adaptive_learning',
     ),
