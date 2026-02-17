@@ -31,7 +31,10 @@ export function VisualTimer({ startsAtIso, expiresAtIso, theme, onExpire }: Visu
     return () => clearInterval(interval);
   }, [expiresAtIso, onExpire, startsAtIso]);
 
-  const leftOffsetPct = useMemo(() => `${Math.min(92, progress * 92)}%`, [progress]);
+  const leftOffsetPct = useMemo(
+    () => `${Math.min(92, progress * 92)}%` as `${number}%`,
+    [progress],
+  );
 
   return (
     <View style={styles.card}>
