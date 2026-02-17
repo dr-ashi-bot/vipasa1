@@ -2,6 +2,18 @@
 
 Follow these steps to get a live URL in ~10 minutes.
 
+## Fastest Path to Live URL (~5 min)
+
+**No CLI needed** — use the Vercel dashboard:
+
+1. **Deploy frontend**: Go to https://vercel.com/new → Import `dr-ashi-bot/vipasa1` → Set **Root Directory** to `frontend` → Deploy. You'll get a URL like `https://vipasa1-xxx.vercel.app`.
+
+2. **Deploy backend**: Go to https://render.com → New Web Service → Connect `dr-ashi-bot/vipasa1` → Root: `backend` → Add `DATABASE_URL` (Neon) and `MONGO_URI` (Atlas) → Deploy.
+
+3. **Connect them**: In Vercel project → Settings → Environment Variables → Add `EXPO_PUBLIC_API_URL` = your Render URL → Redeploy.
+
+4. **Done**: Open your Vercel URL — you have a working app.
+
 ## Prerequisites
 
 - GitHub account (repo: https://github.com/dr-ashi-bot/vipasa1)
@@ -55,8 +67,9 @@ Follow these steps to get a live URL in ~10 minutes.
 
 ---
 
-## Step 3: Deploy Frontend (Vercel)
+## Step 3: Deploy Frontend (Vercel or Netlify)
 
+### Option A: Vercel
 1. Go to https://vercel.com/new
 2. Import repository: `dr-ashi-bot/vipasa1`
 3. Settings:
@@ -70,6 +83,14 @@ Follow these steps to get a live URL in ~10 minutes.
 
 5. Click **Deploy**
 6. Copy your frontend URL: `https://your-project.vercel.app`
+
+### Option B: Netlify
+1. Go to https://app.netlify.com/start
+2. Import from Git → `dr-ashi-bot/vipasa1`
+3. Base directory: `frontend`
+4. Build command & publish directory are auto-detected from `netlify.toml`
+5. Add env var: `EXPO_PUBLIC_API_URL` = your Render backend URL
+6. Deploy
 
 ---
 
