@@ -1,0 +1,29 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "Adaptive learning platform monorepo (NestJS + Expo).",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "mobile"
+  ],
+  "scripts": {
+    "dev:backend": "npm run start:dev --workspace backend",
+    "dev:mobile": "npm run start --workspace mobile",
+    "build:backend": "npm run build --workspace backend",
+    "test:backend": "npm run test --workspace backend",
+    "test:e2e:backend": "npm run test:e2e --workspace backend",
+    "typecheck:mobile": "npm run typecheck --workspace mobile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dr-ashi-bot/vipasa1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dr-ashi-bot/vipasa1/issues"
+  },
+  "homepage": "https://github.com/dr-ashi-bot/vipasa1#readme"
+}

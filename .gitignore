@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build output
+backend/dist/
+backend/coverage/
+mobile/dist/
+mobile/web-build/
+
+# Local env
+.env
+.env.*
+!.env.example
+backend/.env
+mobile/.env
+
+# Tooling
+.DS_Store
+*.tsbuildinfo
+.expo/
+*.log
