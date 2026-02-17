@@ -1,21 +1,40 @@
-# VIPASA1
+# Adaptive Learning Platform (Flow-State Tutor)
 
-This is the initial version of the README file for the VIPASA1 project.
+End-to-end adaptive learning app (mobile + web) for a 5th-grade learner (“Ashi”), with:
 
-## Current Date and Time
-The current date and time is: **2026-02-17 01:59:34 UTC**
+- **Dual-track mastery**: math reasoning (6th-grade / Beast Academy style) decoupled from ELA reading level (4th-grade Lexile).
+- **Hyper-personalized AI tutor**: retrieval-augmented memory + Socratic feedback (one guiding question on incorrect answers).
+- **Event-driven gamification**: points/streaks/leagues/quests via async events.
+- **Neuroscience session boundaries**: immutable focus blocks with **visual** timers (no countdown numbers).
+- **Video verification**: YouTube IFrame-based watch validation (≥ 90%).
 
-## Description
-VIPASA1 is a project that aims to... (add more details here).
+## Repo layout
 
-## Installation
-Instructions on how to install the project will go here...
+- `apps/mobile`: Expo React Native app (iOS/Android/Web)
+- `services/api`: NestJS API (REST)
+- `infra/docker-compose.yml`: Postgres + Mongo + RabbitMQ + Chroma for local dev
 
-## Usage
-Instructions on how to use the project will go here...
+## Quickstart (local dev)
 
-## Contributing
-Guidelines for contributing to the project will go here...
+Start infrastructure:
 
-## License
-Information about the project's license will go here...
+```bash
+npm run dev:infra
+```
+
+Run API:
+
+```bash
+npm run dev:api
+```
+
+Run mobile/web app:
+
+```bash
+npm run dev:mobile
+```
+
+## Environment variables
+
+- API service: copy `services/api/.env.example` to `services/api/.env`
+- Mobile app: copy `apps/mobile/.env.example` to `apps/mobile/.env`

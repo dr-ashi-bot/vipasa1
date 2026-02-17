@@ -1,0 +1,17 @@
+{
+  "name": "adaptive-learning-platform",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "services/*"
+  ],
+  "scripts": {
+    "dev:infra": "docker compose -f infra/docker-compose.yml up -d",
+    "down:infra": "docker compose -f infra/docker-compose.yml down",
+    "logs:infra": "docker compose -f infra/docker-compose.yml logs -f --tail=200",
+    "dev:api": "npm --prefix services/api run start:dev",
+    "dev:mobile": "npm --prefix apps/mobile run start",
+    "test:api": "npm --prefix services/api test",
+    "lint:api": "npm --prefix services/api run lint"
+  }
+}
