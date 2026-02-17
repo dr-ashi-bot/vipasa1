@@ -36,6 +36,12 @@ npm run backend:dev
 npm run mobile:web
 ```
 
+To point the mobile/web app at your backend, set `EXPO_PUBLIC_API_BASE_URL` (for example in `.env`):
+
+```bash
+EXPO_PUBLIC_API_BASE_URL=http://localhost:3000
+```
+
 ## Required API endpoints
 
 The backend implements these REST contracts under the `/api` prefix:
