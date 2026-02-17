@@ -471,7 +471,7 @@ export default function App() {
             height={220}
             videoId={KHAN_VIDEO_ID}
             onChangeState={onVideoStateChange}
-            onPlaybackRateChange={(rateValue) => {
+            onPlaybackRateChange={(rateValue: string) => {
               const parsed = Number(rateValue);
               playbackRateRef.current = Number.isFinite(parsed) ? parsed : 1;
             }}

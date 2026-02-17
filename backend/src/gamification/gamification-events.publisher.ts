@@ -1,5 +1,5 @@
 import { Injectable, Logger, OnModuleDestroy } from '@nestjs/common';
-import amqplib, { Channel, Connection } from 'amqplib';
+import amqplib, { Channel, ChannelModel } from 'amqplib';
 import { ProgressSubmittedEvent } from './gamification-event.types';
 
 @Injectable()
@@ -8,7 +8,7 @@ export class GamificationEventsPublisher implements OnModuleDestroy {
   private readonly brokerUrl = process.env.RABBITMQ_URL ?? '';
   private readonly queueName =
     process.env.RABBITMQ_PROGRESS_QUEUE ?? 'adaptive.progress.submitted';
-  private connection: Connection | null = null;
+  private connection: ChannelModel | null = null;
   private channel: Channel | null = null;
 
   async publishProgressSubmitted(event: ProgressSubmittedEvent): Promise<boolean> {
@@ -46,10 +46,12 @@ export class GamificationEventsPublisher implements OnModuleDestroy {
   }
 
   private async ensureChannel(): Promise<void> {
-    if (this.channel) {
+    if (this.connection && this.channel) {
       return;
     }
-    this.connection = await amqplib.connect(this.brokerUrl);
-    this.channel = await this.connection.createChannel();
+
+    const model = await amqplib.connect(this.brokerUrl);
+    this.connection = model;
+    this.channel = await model.createChannel();
   }
 }
