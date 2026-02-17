@@ -1,0 +1,16 @@
+{
+  "name": "vipasa1",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Adaptive learning platform for hyper-personalized student flow-state experiences.",
+  "workspaces": [
+    "apps/backend",
+    "apps/mobile"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace @vipasa/backend",
+    "test": "npm run test --workspace @vipasa/backend",
+    "start:backend": "npm run start --workspace @vipasa/backend",
+    "start:mobile": "npm run start --workspace @vipasa/mobile"
+  }
+}
