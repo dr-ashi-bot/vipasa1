@@ -10,7 +10,6 @@ import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { GamificationService } from './gamification.service';
 import { SubmitProgressDto } from '../bkt/dto/submit-progress.dto';
 import { BKTService } from '../bkt/bkt.service';
-import { VectorMemoryService } from '../content/vector-memory.service';
 
 @ApiTags('Progress & Gamification')
 @Controller('api/progress')
@@ -18,13 +17,12 @@ export class GamificationController {
   constructor(
     private readonly gamificationService: GamificationService,
     private readonly bktService: BKTService,
-    private readonly vectorMemory: VectorMemoryService,
   ) {}
 
   /**
    * POST /api/progress/submit
-   * Receives is_correct boolean. Updates BKT table and emits async
-   * event to update MongoDB gamification states.
+   * Receives is_correct boolean. Updates BKT PostgreSQL table
+   * and emits async event to update MongoDB gamification states.
    */
   @Post('submit')
   @ApiOperation({
@@ -49,7 +47,7 @@ export class GamificationController {
     let gamificationResult;
 
     if (dto.is_correct) {
-      // Award XP and calculate confetti (MongoDB - async event in production)
+      // Award XP and calculate confetti (MongoDB via async event)
       gamificationResult =
         await this.gamificationService.handleCorrectAnswer(
           dto.user_id,
@@ -58,14 +56,6 @@ export class GamificationController {
     } else {
       // Reset flow state on incorrect answer
       await this.gamificationService.handleIncorrectAnswer(dto.user_id);
-
-      // Store mistake in vector memory for Socratic follow-up
-      await this.vectorMemory.storeMistake(
-        dto.user_id,
-        dto.concept_id,
-        'incorrect',
-        `Failed on ${dto.concept_id} at mastery ${mastery.probability_known.toFixed(3)}`,
-      );
 
       gamificationResult = {
         xp_earned: 0,

@@ -1,4 +1,4 @@
-import { Module, forwardRef } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import {
@@ -13,7 +13,6 @@ import {
 import { GamificationService } from './gamification.service';
 import { GamificationController } from './gamification.controller';
 import { BKTModule } from '../bkt/bkt.module';
-import { ContentModule } from '../content/content.module';
 
 @Module({
   imports: [
@@ -24,7 +23,6 @@ import { ContentModule } from '../content/content.module';
       { name: Leaderboard.name, schema: LeaderboardSchema },
     ]),
     BKTModule,
-    forwardRef(() => ContentModule),
   ],
   controllers: [GamificationController],
   providers: [GamificationService],
