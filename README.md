@@ -1,21 +1,115 @@
-# VIPASA1
+# Adaptive Learning Platform
 
-This is the initial version of the README file for the VIPASA1 project.
+A hyper-personalized, adaptive learning platform built with Flow State Design principles to transition users from extrinsic to intrinsic motivation.
 
-## Current Date and Time
-The current date and time is: **2026-02-17 01:59:34 UTC**
+## Project Overview
 
-## Description
-VIPASA1 is a project that aims to... (add more details here).
+This platform provides a scalable, end-to-end adaptive learning experience tailored to individual student needs, featuring:
 
-## Installation
-Instructions on how to install the project will go here...
+- **Dual-Track Adaptive Curriculum**: Separate mastery tracking for Math and ELA using Bayesian Knowledge Tracing (BKT)
+- **AI-Powered Content Generation**: Retrieval-Augmented Generation (RAG) with personalized, Socratic tutoring
+- **Progressive Gamification**: Smart reward system that fades extrinsic rewards as users enter flow states
+- **Neuroscience-Based Session Management**: Pomodoro-style focus blocks optimized for pre-teens
+- **Video Learning Integration**: Khan Academy content with anti-cheat verification
 
-## Usage
-Instructions on how to use the project will go here...
+## Technology Stack
 
-## Contributing
-Guidelines for contributing to the project will go here...
+### Frontend
+- **React Native (Expo)**: Cross-platform (iOS/Android/Web)
+- **Lottie**: High-performance JSON animations
+- **YouTube IFrame API**: Embedded video content
+
+### Backend
+- **NestJS**: TypeScript-first microservices architecture
+- **Node.js**: Runtime environment
+- **PostgreSQL**: User profiles and curriculum mapping
+- **MongoDB**: High-throughput gamification data
+- **Pinecone/Chroma**: Vector database for LLM memory
+- **RabbitMQ**: Message broker for event-driven architecture
+- **OpenAI GPT-4o / Anthropic Claude**: AI content generation
+
+## Project Structure
+
+```
+/workspace
+├── backend/          # NestJS microservices
+├── frontend/         # React Native Expo app
+└── shared/           # Shared types and utilities
+```
+
+## Getting Started
+
+### Prerequisites
+- Node.js 18+
+- PostgreSQL 14+
+- MongoDB 6+
+- Docker (for RabbitMQ)
+
+### Installation
+
+#### Backend
+```bash
+cd backend
+npm install
+npm run start:dev
+```
+
+#### Frontend
+```bash
+cd frontend
+npm install
+npx expo start
+```
+
+## Architecture
+
+### Microservices
+1. **Session Service**: Manages learning sessions and timers
+2. **Content Service**: AI-powered content generation with RAG
+3. **Progress Service**: BKT engine and mastery tracking
+4. **Gamification Service**: XP, streaks, leagues, and quests
+5. **Video Service**: YouTube integration and verification
+
+### Database Schemas
+
+#### PostgreSQL
+- `UserProfile`: User information and learning levels
+- `BKTMastery`: Bayesian Knowledge Tracing data
+
+#### MongoDB
+- `GamificationState`: Streaks, XP, leagues
+
+#### Vector DB
+- Conversation history and user memory for RAG
+
+## Key Features
+
+### Bayesian Knowledge Tracing
+Tracks mastery probability for each concept, ensuring optimal challenge level.
+
+### Hyper-Personalization
+- User's name injected into all problems
+- Content based on personal interests (gymnastics, puppies)
+- Adaptive difficulty based on separate Math and ELA levels
+
+### Flow State Design
+- Confetti animations that fade as user achieves flow
+- Story-driven problems with curiosity gaps
+- Socratic questioning instead of direct answers
+
+### Gamification System
+- Daily streaks with streak freezes
+- 10-tier league system (Bronze → Diamond)
+- Time-bound quests and challenges
+- XP rewards for progress
+
+## API Endpoints
+
+- `POST /api/session/start`: Initialize learning session
+- `POST /api/content/generate`: Generate personalized content
+- `POST /api/progress/submit`: Submit answer and update mastery
+- `POST /api/video/verify`: Verify video completion
 
 ## License
-Information about the project's license will go here...
+
+Proprietary - All rights reserved
