@@ -1,0 +1,19 @@
+**/node_modules
+**/.expo
+**/.expo-shared
+**/dist
+**/build
+**/.turbo
+**/.next
+**/.cache
+**/coverage
+**/*.log
+
+.env
+.env.*
+!.env.example
+
+# OS/editor
+.DS_Store
+.idea
+.vscode

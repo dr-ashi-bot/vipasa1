@@ -1,0 +1,16 @@
+{
+  "name": "vipasa1",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Adaptive learning platform (Expo + NestJS) for Ashi",
+  "scripts": {
+    "infra:up": "docker compose up -d",
+    "infra:down": "docker compose down",
+    "backend:dev": "npm --prefix apps/backend run start:dev",
+    "backend:test": "npm --prefix apps/backend test",
+    "backend:lint": "npm --prefix apps/backend run lint",
+    "mobile:start": "npm --prefix apps/mobile start",
+    "mobile:web": "npm --prefix apps/mobile run web",
+    "mobile:lint": "npm --prefix apps/mobile run lint"
+  }
+}
