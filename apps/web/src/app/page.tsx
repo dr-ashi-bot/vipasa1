@@ -111,7 +111,7 @@ function normalizeText(value: string): string {
   return value.trim().toLowerCase().replace(/[^\w\s]/g, "");
 }
 
-export default function Home(): JSX.Element {
+export default function Home() {
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string>("");
