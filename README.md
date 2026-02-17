@@ -1,6 +1,27 @@
 # Adaptive Learning Platform
 
+> **Status**: ✅ COMPLETE - Production Ready
+
 A hyper-personalized, adaptive learning platform built with Flow State Design principles to transition users from extrinsic to intrinsic motivation.
+
+**Target User**: 5th-grade student (Ashi) with 6th-grade math aptitude and 4th-grade reading level, interested in gymnastics and cute puppies.
+
+## Quick Start
+
+```bash
+# 1. Start databases with Docker
+docker-compose up -d
+
+# 2. Install and start backend
+cd backend && npm install
+npm run start:dev
+
+# 3. Install and start frontend (new terminal)
+cd frontend && npm install
+npx expo start
+```
+
+See [SETUP.md](SETUP.md) for detailed instructions.
 
 ## Project Overview
 
